@@ -8,12 +8,11 @@ class Chronometer {
     this.splitArray = []
   }
   
-  startClick(func1) {
+  startClick() {
     this.intervalId = setInterval(() => {
-      this.currentTime += 1;
-      this.getMinutes();
-      this.getSeconds();
-      func1()
+    this.currentTime += 1;
+    this.getMinutes();
+    this.getSeconds();
     }, 1000);
   }
 
@@ -22,11 +21,14 @@ class Chronometer {
     if (minuteCounter % 60 === 0) {
       this.minutes += 1;
     }
+    return this.minutes
   }
 
   getSeconds() {
     let secondCounter = this.currentTime
     this.seconds = secondCounter - (this.minutes * 60)
+
+    return this.seconds
   }
 
   twoDigitsNumber(time) {
